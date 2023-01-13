@@ -6,6 +6,7 @@ public class Unit{
   boolean over = false;
   
   String pos;
+  int status;
 
   public Unit(float x, float y, float wid, float hei, String pos) {
     this.x = x;
@@ -33,6 +34,16 @@ public class Unit{
     }
     stroke(255);
     rect(x, y, wid, hei);
+    
+    //circles depending on status
+    if (status == 1){
+      fill(color(255, 0, 0));
+      circle(x, y, size - 5);
+    } else if (status == -1){
+      fill(color(255, 255, 0));
+      circle(x, y, size - 5);
+    }
+    
     stroke(0);
     fill(0);
   }

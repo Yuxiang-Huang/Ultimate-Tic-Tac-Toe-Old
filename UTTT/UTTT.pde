@@ -3,9 +3,13 @@ boolean handCursor;
 
 ArrayList<Unit> units = new ArrayList<Unit>();
 
+int turn = 1;
+
+float size;
+
 void setup(){
   background(255);
-  size(600, 720);
+  size(720, 720);
   rectMode(CENTER);
   
   int leftBound = 10;
@@ -15,9 +19,10 @@ void setup(){
   
   float wid = (rightBound - leftBound) / 9.0;
   float hei = (upBound - downBound) / 9.0;
+  size = Math.min(wid, hei);
 
+  //lines
   for (int i = 0; i < 10; i ++){
-    //lines
     if (i % 3 == 0){
       strokeWeight(2);
     } else{
@@ -27,6 +32,7 @@ void setup(){
     line(leftBound, i * hei + downBound, rightBound, i * hei + downBound);
   }
   
+  //units
   for (int i = 0; i < 9; i ++){
     for (int j = 0; j < 9; j ++){
       //units
@@ -38,5 +44,14 @@ void setup(){
 void draw(){
   for (Unit curr : units){
     curr.update();
+  }
+}
+
+void mouseClicked(){
+  for (Unit curr : units){
+    if (curr.over){
+      curr.status = turn;
+      turn = - turn;
+    }
   }
 }
