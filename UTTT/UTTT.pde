@@ -1,7 +1,7 @@
-color highlight = color(200);
+color highlight = color (0, 255, 255);
 boolean handCursor;
 
-Unit test;
+ArrayList<Unit> units = new ArrayList<Unit>();
 
 void setup(){
   background(255);
@@ -25,12 +25,18 @@ void setup(){
     }
     line(i * wid + leftBound, downBound, i * wid + leftBound, upBound);
     line(leftBound, i * hei + downBound, rightBound, i * hei + downBound);
-    
-    //units
-    test = new Unit (i * wid + leftBound - wid / 2, i * hei + downBound - hei / 2, wid - 5, hei - 5, "left");
+  }
+  
+  for (int i = 0; i < 9; i ++){
+    for (int j = 0; j < 9; j ++){
+      //units
+      units.add(new Unit (i * wid + leftBound + wid / 2, j * hei + downBound + hei / 2, wid - 5, hei - 5, "left"));
+    }
   }
 }
 
 void draw(){
-  test.update();
+  for (Unit curr : units){
+    curr.update();
+  }
 }
