@@ -31,7 +31,9 @@ public class Unit{
     } else{
       fill(255);
     }
+    stroke(255);
     rect(x, y, wid, hei);
+    stroke(0);
     fill(0);
   }
     
